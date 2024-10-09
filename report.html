@@ -1,0 +1,209 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Performance Test Report with Artillery</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 20px;
+            }
+            h1, h2 {
+                color: #fff;
+                background-color: #333;
+                padding: 10px;
+            }
+            h2 {
+                background-color: #008CBA; /* Light blue color */
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-bottom: 20px;
+            }
+            th, td {
+                border: 1px solid #ddd;
+                padding: 8px;
+                text-align: left;
+            }
+            th {
+                background-color: #f2f2f2;
+            }
+            #chartContainer {
+                width: 80%;
+                margin: 0 auto;
+            }
+        </style>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
+    <body>
+        <h1>Performance Test Report with Artillery</h1>
+        
+        <h2>General Statistics</h2>
+        <table>
+            <tr><th>Scenarios Launched</th><td>N/A</td></tr>
+            <tr><th>Scenarios Completed</th><td>N/A</td></tr>
+            <tr><th>Requests Completed</th><td>930</td></tr>
+            <tr><th>Successful Responses</th><td>930</td></tr>
+            <tr><th>Errors</th><td>930</td></tr>
+            <tr><th>Average Response Time</th><td>269.70 ms</td></tr>
+        </table>
+        
+        <h2>Response Time Distribution</h2>
+        <p>Min: 158 ms, Max: 2045 ms</p>
+        <p>95th Percentile: 608.00 ms</p>
+
+        <h2>Response Codes Chart</h2>
+        <div id="chartContainer">
+            <canvas id="responseChart"></canvas>
+        </div>
+
+        <script>
+            const results = {"aggregate":{"counters":{"vusers.created_by_name.0":930,"vusers.created":930,"http.requests":930,"http.codes.200":930,"http.responses":930,"http.downloaded_bytes":47190060,"plugins.metrics-by-endpoint./BenchmarkWebQA/Home.aspx/Search.codes.200":930,"errors.an URL must be specified":930,"vusers.failed":930},"rates":{"http.request_rate":7},"firstCounterAt":1728427482211,"firstHistogramAt":1728427483907,"lastCounterAt":1728427638258,"lastHistogramAt":1728427638258,"firstMetricAt":1728427482211,"lastMetricAt":1728427638258,"period":1728427630000,"summaries":{"http.response_time":{"min":158,"max":2045,"count":930,"mean":269.7,"p50":206.5,"median":206.5,"p75":252.2,"p90":450.4,"p95":608,"p99":854.2,"p999":2059.5},"plugins.metrics-by-endpoint.response_time./BenchmarkWebQA/Home.aspx/Search":{"min":158,"max":2045,"count":930,"mean":269.7,"p50":206.5,"median":206.5,"p75":252.2,"p90":450.4,"p95":608,"p99":854.2,"p999":2059.5}},"histograms":{"http.response_time":{"min":158,"max":2045,"count":930,"mean":269.7,"p50":206.5,"median":206.5,"p75":252.2,"p90":450.4,"p95":608,"p99":854.2,"p999":2059.5},"plugins.metrics-by-endpoint.response_time./BenchmarkWebQA/Home.aspx/Search":{"min":158,"max":2045,"count":930,"mean":269.7,"p50":206.5,"median":206.5,"p75":252.2,"p90":450.4,"p95":608,"p99":854.2,"p999":2059.5}}},"intermediate":[{"counters":{"vusers.created_by_name.0":8,"vusers.created":8,"http.requests":8,"http.codes.200":7,"http.responses":7,"http.downloaded_bytes":304452,"plugins.metrics-by-endpoint./BenchmarkWebQA/Home.aspx/Search.codes.200":6,"errors.an URL must be specified":6,"vusers.failed":6},"rates":{"http.request_rate":1},"http.request_rate":null,"firstCounterAt":1728427482211,"firstHistogramAt":1728427483907,"lastCounterAt":1728427489891,"lastHistogramAt":1728427489891,"firstMetricAt":1728427482211,"lastMetricAt":1728427489891,"period":"1728427480000","summaries":{"http.response_time":{"min":220,"max":436,"count":7,"mean":334.7,"p50":340.4,"median":340.4,"p75":407.5,"p90":424.2,"p95":424.2,"p99":424.2,"p999":424.2},"plugins.metrics-by-endpoint.response_time./BenchmarkWebQA/Home.aspx/Search":{"min":220,"max":436,"count":6,"mean":319.8,"p50":278.7,"median":278.7,"p75":340.4,"p90":407.5,"p95":407.5,"p99":407.5,"p999":407.5}},"histograms":{"http.response_time":{"min":220,"max":436,"count":7,"mean":334.7,"p50":340.4,"median":340.4,"p75":407.5,"p90":424.2,"p95":424.2,"p99":424.2,"p999":424.2},"plugins.metrics-by-endpoint.response_time./BenchmarkWebQA/Home.aspx/Search":{"min":220,"max":436,"count":6,"mean":319.8,"p50":278.7,"median":278.7,"p75":340.4,"p90":407.5,"p95":407.5,"p99":407.5,"p999":407.5}}},{"counters":{"vusers.created_by_name.0":20,"vusers.created":20,"http.requests":20,"http.codes.200":21,"http.responses":21,"http.downloaded_bytes":1014840,"plugins.metrics-by-endpoint./BenchmarkWebQA/Home.aspx/Search.codes.200":20,"errors.an URL must be specified":20,"vusers.failed":20},"rates":{"http.request_rate":2},"http.request_rate":null,"firstCounterAt":1728427490267,"firstHistogramAt":1728427490346,"lastCounterAt":1728427499842,"lastHistogramAt":1728427499842,"firstMetricAt":1728427490267,"lastMetricAt":1728427499842,"period":"1728427490000","summaries":{"http.response_time":{"min":193,"max":561,"count":21,"mean":291.2,"p50":232.8,"median":232.8,"p75":376.2,"p90":478.3,"p95":561.2,"p99":561.2,"p999":561.2},"plugins.metrics-by-endpoint.response_time./BenchmarkWebQA/Home.aspx/Search":{"min":193,"max":561,"count":20,"mean":304.2,"p50":232.8,"median":232.8,"p75":376.2,"p90":478.3,"p95":561.2,"p99":561.2,"p999":561.2}},"histograms":{"http.response_time":{"min":193,"max":561,"count":21,"mean":291.2,"p50":232.8,"median":232.8,"p75":376.2,"p90":478.3,"p95":561.2,"p99":561.2,"p999":561.2},"plugins.metrics-by-endpoint.response_time./BenchmarkWebQA/Home.aspx/Search":{"min":193,"max":561,"count":20,"mean":304.2,"p50":232.8,"median":232.8,"p75":376.2,"p90":478.3,"p95":561.2,"p99":561.2,"p999":561.2}}},{"counters":{"http.downloaded_bytes":1217808,"plugins.metrics-by-endpoint./BenchmarkWebQA/Home.aspx/Search.codes.200":24,"errors.an URL must be specified":24,"vusers.failed":24,"vusers.created_by_name.0":25,"vusers.created":25,"http.requests":25,"http.codes.200":24,"http.responses":24},"rates":{"http.request_rate":3},"http.request_rate":null,"firstCounterAt":1728427500143,"firstHistogramAt":1728427500143,"lastCounterAt":1728427509916,"lastHistogramAt":1728427509916,"firstMetricAt":1728427500143,"lastMetricAt":1728427509916,"period":"1728427500000","summaries":{"plugins.metrics-by-endpoint.response_time./BenchmarkWebQA/Home.aspx/Search":{"min":182,"max":473,"count":24,"mean":224.1,"p50":206.5,"median":206.5,"p75":228.2,"p90":262.5,"p95":262.5,"p99":267.8,"p999":267.8},"http.response_time":{"min":182,"max":473,"count":24,"mean":221.4,"p50":198.4,"median":198.4,"p75":219.2,"p90":262.5,"p95":262.5,"p99":267.8,"p999":267.8}},"histograms":{"plugins.metrics-by-endpoint.response_time./BenchmarkWebQA/Home.aspx/Search":{"min":182,"max":473,"count":24,"mean":224.1,"p50":206.5,"median":206.5,"p75":228.2,"p90":262.5,"p95":262.5,"p99":267.8,"p999":267.8},"http.response_time":{"min":182,"max":473,"count":24,"mean":221.4,"p50":198.4,"median":198.4,"p75":219.2,"p90":262.5,"p95":262.5,"p99":267.8,"p999":267.8}}},{"counters":{"http.downloaded_bytes":1522260,"plugins.metrics-by-endpoint./BenchmarkWebQA/Home.aspx/Search.codes.200":30,"errors.an URL must be specified":30,"vusers.failed":30,"vusers.created_by_name.0":31,"vusers.created":31,"http.requests":31,"http.codes.200":30,"http.responses":30},"rates":{"http.request_rate":4},"http.request_rate":null,"firstCounterAt":1728427510039,"firstHistogramAt":1728427510039,"lastCounterAt":1728427519963,"lastHistogramAt":1728427519963,"firstMetricAt":1728427510039,"lastMetricAt":1728427519963,"period":"1728427510000","summaries":{"plugins.metrics-by-endpoint.response_time./BenchmarkWebQA/Home.aspx/Search":{"min":188,"max":214,"count":30,"mean":199.2,"p50":198.4,"median":198.4,"p75":202.4,"p90":206.5,"p95":206.5,"p99":210.6,"p999":210.6},"http.response_time":{"min":188,"max":214,"count":30,"mean":199.3,"p50":198.4,"median":198.4,"p75":202.4,"p90":206.5,"p95":206.5,"p99":210.6,"p999":210.6}},"histograms":{"plugins.metrics-by-endpoint.response_time./BenchmarkWebQA/Home.aspx/Search":{"min":188,"max":214,"count":30,"mean":199.2,"p50":198.4,"median":198.4,"p75":202.4,"p90":206.5,"p95":206.5,"p99":210.6,"p999":210.6},"http.response_time":{"min":188,"max":214,"count":30,"mean":199.3,"p50":198.4,"median":198.4,"p75":202.4,"p90":206.5,"p95":206.5,"p99":210.6,"p999":210.6}}},{"counters":{"http.downloaded_bytes":2029680,"plugins.metrics-by-endpoint./BenchmarkWebQA/Home.aspx/Search.codes.200":40,"errors.an URL must be specified":40,"vusers.failed":40,"vusers.created_by_name.0":40,"vusers.created":40,"http.requests":40,"http.codes.200":38,"http.responses":38},"rates":{"http.request_rate":4},"http.request_rate":null,"firstCounterAt":1728427520100,"firstHistogramAt":1728427520100,"lastCounterAt":1728427529765,"lastHistogramAt":1728427529536,"firstMetricAt":1728427520100,"lastMetricAt":1728427529765,"period":"1728427520000","summaries":{"plugins.metrics-by-endpoint.response_time./BenchmarkWebQA/Home.aspx/Search":{"min":189,"max":607,"count":40,"mean":223.6,"p50":206.5,"median":206.5,"p75":214.9,"p90":228.2,"p95":237.5,"p99":459.5,"p999":459.5},"http.response_time":{"min":189,"max":607,"count":38,"mean":225.1,"p50":206.5,"median":206.5,"p75":214.9,"p90":228.2,"p95":237.5,"p99":459.5,"p999":459.5}},"histograms":{"plugins.metrics-by-endpoint.response_time./BenchmarkWebQA/Home.aspx/Search":{"min":189,"max":607,"count":40,"mean":223.6,"p50":206.5,"median":206.5,"p75":214.9,"p90":228.2,"p95":237.5,"p99":459.5,"p999":459.5},"http.response_time":{"min":189,"max":607,"count":38,"mean":225.1,"p50":206.5,"median":206.5,"p75":214.9,"p90":228.2,"p95":237.5,"p99":459.5,"p999":459.5}}},{"counters":{"http.codes.200":45,"http.responses":45,"http.downloaded_bytes":2283390,"plugins.metrics-by-endpoint./BenchmarkWebQA/Home.aspx/Search.codes.200":45,"errors.an URL must be specified":45,"vusers.failed":45,"vusers.created_by_name.0":46,"vusers.created":46,"http.requests":46},"rates":{"http.request_rate":5},"http.request_rate":null,"firstCounterAt":1728427530037,"firstHistogramAt":1728427530037,"lastCounterAt":1728427539889,"lastHistogramAt":1728427539599,"firstMetricAt":1728427530037,"lastMetricAt":1728427539889,"period":"1728427530000","summaries":{"http.response_time":{"min":175,"max":216,"count":45,"mean":199.3,"p50":202.4,"median":202.4,"p75":206.5,"p90":210.6,"p95":214.9,"p99":214.9,"p999":214.9},"plugins.metrics-by-endpoint.response_time./BenchmarkWebQA/Home.aspx/Search":{"min":175,"max":216,"count":45,"mean":199.3,"p50":202.4,"median":202.4,"p75":206.5,"p90":210.6,"p95":214.9,"p99":214.9,"p999":214.9}},"histograms":{"http.response_time":{"min":175,"max":216,"count":45,"mean":199.3,"p50":202.4,"median":202.4,"p75":206.5,"p90":210.6,"p95":214.9,"p99":214.9,"p999":214.9},"plugins.metrics-by-endpoint.response_time./BenchmarkWebQA/Home.aspx/Search":{"min":175,"max":216,"count":45,"mean":199.3,"p50":202.4,"median":202.4,"p75":206.5,"p90":210.6,"p95":214.9,"p99":214.9,"p999":214.9}}},{"counters":{"http.codes.200":51,"http.responses":51,"http.downloaded_bytes":2587842,"plugins.metrics-by-endpoint./BenchmarkWebQA/Home.aspx/Search.codes.200":51,"errors.an URL must be specified":51,"vusers.failed":51,"vusers.created_by_name.0":52,"vusers.created":52,"http.requests":52},"rates":{"http.request_rate":7},"http.request_rate":null,"firstCounterAt":1728427540080,"firstHistogramAt":1728427540080,"lastCounterAt":1728427549989,"lastHistogramAt":1728427549672,"firstMetricAt":1728427540080,"lastMetricAt":1728427549989,"period":"1728427540000","summaries":{"http.response_time":{"min":170,"max":426,"count":51,"mean":211,"p50":198.4,"median":198.4,"p75":206.5,"p90":262.5,"p95":273.2,"p99":368.8,"p999":368.8},"plugins.metrics-by-endpoint.response_time./BenchmarkWebQA/Home.aspx/Search":{"min":170,"max":426,"count":51,"mean":211,"p50":198.4,"median":198.4,"p75":206.5,"p90":262.5,"p95":273.2,"p99":368.8,"p999":368.8}},"histograms":{"http.response_time":{"min":170,"max":426,"count":51,"mean":211,"p50":198.4,"median":198.4,"p75":206.5,"p90":262.5,"p95":273.2,"p99":368.8,"p999":368.8},"plugins.metrics-by-endpoint.response_time./BenchmarkWebQA/Home.aspx/Search":{"min":170,"max":426,"count":51,"mean":211,"p50":198.4,"median":198.4,"p75":206.5,"p90":262.5,"p95":273.2,"p99":368.8,"p999":368.8}}},{"counters":{"http.codes.200":50,"http.responses":50,"http.downloaded_bytes":2232648,"plugins.metrics-by-endpoint./BenchmarkWebQA/Home.aspx/Search.codes.200":44,"errors.an URL must be specified":44,"vusers.failed":44,"vusers.created_by_name.0":58,"vusers.created":58,"http.requests":58},"rates":{"http.request_rate":6},"http.request_rate":null,"firstCounterAt":1728427550103,"firstHistogramAt":1728427550103,"lastCounterAt":1728427559929,"lastHistogramAt":1728427559887,"firstMetricAt":1728427550103,"lastMetricAt":1728427559929,"period":"1728427550000","summaries":{"http.response_time":{"min":160,"max":1600,"count":50,"mean":317.3,"p50":206.5,"median":206.5,"p75":314.2,"p90":487.9,"p95":528.6,"p99":1525.7,"p999":1525.7},"plugins.metrics-by-endpoint.response_time./BenchmarkWebQA/Home.aspx/Search":{"min":160,"max":1600,"count":44,"mean":317.4,"p50":206.5,"median":206.5,"p75":314.2,"p90":487.9,"p95":528.6,"p99":1525.7,"p999":1525.7}},"histograms":{"http.response_time":{"min":160,"max":1600,"count":50,"mean":317.3,"p50":206.5,"median":206.5,"p75":314.2,"p90":487.9,"p95":528.6,"p99":1525.7,"p999":1525.7},"plugins.metrics-by-endpoint.response_time./BenchmarkWebQA/Home.aspx/Search":{"min":160,"max":1600,"count":44,"mean":317.4,"p50":206.5,"median":206.5,"p75":314.2,"p90":487.9,"p95":528.6,"p99":1525.7,"p999":1525.7}}},{"counters":{"http.downloaded_bytes":2232648,"plugins.metrics-by-endpoint./BenchmarkWebQA/Home.aspx/Search.codes.200":44,"errors.an URL must be specified":44,"vusers.failed":44,"vusers.created_by_name.0":68,"vusers.created":68,"http.requests":68,"http.codes.200":42,"http.responses":42},"rates":{"http.request_rate":7},"http.request_rate":null,"firstCounterAt":1728427560000,"firstHistogramAt":1728427560001,"lastCounterAt":1728427569942,"lastHistogramAt":1728427569787,"firstMetricAt":1728427560000,"lastMetricAt":1728427569942,"period":"1728427560000","summaries":{"plugins.metrics-by-endpoint.response_time./BenchmarkWebQA/Home.aspx/Search":{"min":217,"max":848,"count":44,"mean":482.8,"p50":415.8,"median":415.8,"p75":713.5,"p90":788.5,"p95":854.2,"p99":854.2,"p999":854.2},"http.response_time":{"min":220,"max":848,"count":42,"mean":516.4,"p50":518.1,"median":518.1,"p75":713.5,"p90":788.5,"p95":854.2,"p99":854.2,"p999":854.2}},"histograms":{"plugins.metrics-by-endpoint.response_time./BenchmarkWebQA/Home.aspx/Search":{"min":217,"max":848,"count":44,"mean":482.8,"p50":415.8,"median":415.8,"p75":713.5,"p90":788.5,"p95":854.2,"p99":854.2,"p999":854.2},"http.response_time":{"min":220,"max":848,"count":42,"mean":516.4,"p50":518.1,"median":518.1,"p75":713.5,"p90":788.5,"p95":854.2,"p99":854.2,"p999":854.2}}},{"counters":{"vusers.created_by_name.0":78,"vusers.created":78,"http.requests":78,"http.codes.200":80,"http.responses":80,"http.downloaded_bytes":4059360,"plugins.metrics-by-endpoint./BenchmarkWebQA/Home.aspx/Search.codes.200":80,"errors.an URL must be specified":80,"vusers.failed":80},"rates":{"http.request_rate":8},"http.request_rate":null,"firstCounterAt":1728427570003,"firstHistogramAt":1728427570181,"lastCounterAt":1728427579995,"lastHistogramAt":1728427579994,"firstMetricAt":1728427570003,"lastMetricAt":1728427579995,"period":"1728427570000","summaries":{"http.response_time":{"min":158,"max":814,"count":80,"mean":324.5,"p50":214.9,"median":214.9,"p75":432.7,"p90":671.9,"p95":713.5,"p99":820.7,"p999":820.7},"plugins.metrics-by-endpoint.response_time./BenchmarkWebQA/Home.aspx/Search":{"min":158,"max":814,"count":80,"mean":343.3,"p50":219.2,"median":219.2,"p75":450.4,"p90":671.9,"p95":713.5,"p99":820.7,"p999":820.7}},"histograms":{"http.response_time":{"min":158,"max":814,"count":80,"mean":324.5,"p50":214.9,"median":214.9,"p75":432.7,"p90":671.9,"p95":713.5,"p99":820.7,"p999":820.7},"plugins.metrics-by-endpoint.response_time./BenchmarkWebQA/Home.aspx/Search":{"min":158,"max":814,"count":80,"mean":343.3,"p50":219.2,"median":219.2,"p75":450.4,"p90":671.9,"p95":713.5,"p99":820.7,"p999":820.7}}},{"counters":{"http.codes.200":119,"http.responses":119,"vusers.created_by_name.0":85,"vusers.created":85,"http.requests":84,"http.downloaded_bytes":6038298,"plugins.metrics-by-endpoint./BenchmarkWebQA/Home.aspx/Search.codes.200":119,"errors.an URL must be specified":119,"vusers.failed":119},"rates":{"http.request_rate":9},"http.request_rate":null,"firstCounterAt":1728427580054,"firstHistogramAt":1728427580135,"lastCounterAt":1728427589998,"lastHistogramAt":1728427589949,"firstMetricAt":1728427580054,"lastMetricAt":1728427589998,"period":"1728427580000","summaries":{"http.response_time":{"min":171,"max":435,"count":119,"mean":231.8,"p50":214.9,"median":214.9,"p75":247.2,"p90":290.1,"p95":361.5,"p99":407.5,"p999":432.7},"plugins.metrics-by-endpoint.response_time./BenchmarkWebQA/Home.aspx/Search":{"min":171,"max":435,"count":119,"mean":231,"p50":214.9,"median":214.9,"p75":247.2,"p90":290.1,"p95":361.5,"p99":407.5,"p999":432.7}},"histograms":{"http.response_time":{"min":171,"max":435,"count":119,"mean":231.8,"p50":214.9,"median":214.9,"p75":247.2,"p90":290.1,"p95":361.5,"p99":407.5,"p999":432.7},"plugins.metrics-by-endpoint.response_time./BenchmarkWebQA/Home.aspx/Search":{"min":171,"max":435,"count":119,"mean":231,"p50":214.9,"median":214.9,"p75":247.2,"p90":290.1,"p95":361.5,"p99":407.5,"p999":432.7}}},{"counters":{"http.codes.200":94,"http.responses":94,"vusers.created_by_name.0":93,"vusers.created":93,"http.requests":94,"http.downloaded_bytes":4769748,"plugins.metrics-by-endpoint./BenchmarkWebQA/Home.aspx/Search.codes.200":94,"errors.an URL must be specified":94,"vusers.failed":94},"rates":{"http.request_rate":9},"http.request_rate":null,"firstCounterAt":1728427590000,"firstHistogramAt":1728427590119,"lastCounterAt":1728427599995,"lastHistogramAt":1728427599921,"firstMetricAt":1728427590000,"lastMetricAt":1728427599995,"period":"1728427590000","summaries":{"http.response_time":{"min":174,"max":291,"count":94,"mean":206.9,"p50":198.4,"median":198.4,"p75":214.9,"p90":247.2,"p95":262.5,"p99":290.1,"p999":290.1},"plugins.metrics-by-endpoint.response_time./BenchmarkWebQA/Home.aspx/Search":{"min":174,"max":291,"count":94,"mean":208.5,"p50":198.4,"median":198.4,"p75":223.7,"p90":247.2,"p95":262.5,"p99":290.1,"p999":290.1}},"histograms":{"http.response_time":{"min":174,"max":291,"count":94,"mean":206.9,"p50":198.4,"median":198.4,"p75":214.9,"p90":247.2,"p95":262.5,"p99":290.1,"p999":290.1},"plugins.metrics-by-endpoint.response_time./BenchmarkWebQA/Home.aspx/Search":{"min":174,"max":291,"count":94,"mean":208.5,"p50":198.4,"median":198.4,"p75":223.7,"p90":247.2,"p95":262.5,"p99":290.1,"p999":290.1}}},{"counters":{"http.downloaded_bytes":5074200,"plugins.metrics-by-endpoint./BenchmarkWebQA/Home.aspx/Search.codes.200":100,"errors.an URL must be specified":100,"vusers.failed":100,"http.codes.200":100,"http.responses":100,"vusers.created_by_name.0":99,"vusers.created":99,"http.requests":99},"rates":{"http.request_rate":10},"http.request_rate":null,"firstCounterAt":1728427600020,"firstHistogramAt":1728427600020,"lastCounterAt":1728427609940,"lastHistogramAt":1728427609940,"firstMetricAt":1728427600020,"lastMetricAt":1728427609940,"period":"1728427600000","summaries":{"plugins.metrics-by-endpoint.response_time./BenchmarkWebQA/Home.aspx/Search":{"min":177,"max":815,"count":100,"mean":212.3,"p50":194.4,"median":194.4,"p75":202.4,"p90":247.2,"p95":273.2,"p99":478.3,"p999":478.3},"http.response_time":{"min":177,"max":815,"count":100,"mean":212.4,"p50":194.4,"median":194.4,"p75":202.4,"p90":247.2,"p95":273.2,"p99":478.3,"p999":478.3}},"histograms":{"plugins.metrics-by-endpoint.response_time./BenchmarkWebQA/Home.aspx/Search":{"min":177,"max":815,"count":100,"mean":212.3,"p50":194.4,"median":194.4,"p75":202.4,"p90":247.2,"p95":273.2,"p99":478.3,"p999":478.3},"http.response_time":{"min":177,"max":815,"count":100,"mean":212.4,"p50":194.4,"median":194.4,"p75":202.4,"p90":247.2,"p95":273.2,"p99":478.3,"p999":478.3}}},{"counters":{"vusers.created_by_name.0":100,"vusers.created":100,"http.requests":100,"http.downloaded_bytes":3247488,"plugins.metrics-by-endpoint./BenchmarkWebQA/Home.aspx/Search.codes.200":64,"errors.an URL must be specified":64,"vusers.failed":64,"http.codes.200":64,"http.responses":64},"rates":{"http.request_rate":10},"http.request_rate":null,"firstCounterAt":1728427610057,"firstHistogramAt":1728427610073,"lastCounterAt":1728427619787,"lastHistogramAt":1728427619787,"firstMetricAt":1728427610057,"lastMetricAt":1728427619787,"period":"1728427610000","summaries":{"plugins.metrics-by-endpoint.response_time./BenchmarkWebQA/Home.aspx/Search":{"min":179,"max":734,"count":64,"mean":307.9,"p50":219.2,"median":219.2,"p75":354.3,"p90":584.2,"p95":620.3,"p99":699.4,"p999":699.4},"http.response_time":{"min":179,"max":1767,"count":64,"mean":372.8,"p50":247.2,"median":247.2,"p75":459.5,"p90":620.3,"p95":699.4,"p99":1274.3,"p999":1274.3}},"histograms":{"plugins.metrics-by-endpoint.response_time./BenchmarkWebQA/Home.aspx/Search":{"min":179,"max":734,"count":64,"mean":307.9,"p50":219.2,"median":219.2,"p75":354.3,"p90":584.2,"p95":620.3,"p99":699.4,"p999":699.4},"http.response_time":{"min":179,"max":1767,"count":64,"mean":372.8,"p50":247.2,"median":247.2,"p75":459.5,"p90":620.3,"p95":699.4,"p99":1274.3,"p999":1274.3}}},{"counters":{"vusers.created_by_name.0":100,"vusers.created":100,"http.requests":100,"http.downloaded_bytes":2943036,"plugins.metrics-by-endpoint./BenchmarkWebQA/Home.aspx/Search.codes.200":58,"errors.an URL must be specified":58,"vusers.failed":58,"http.codes.200":58,"http.responses":58},"rates":{"http.request_rate":10},"http.request_rate":null,"firstCounterAt":1728427620097,"firstHistogramAt":1728427620145,"lastCounterAt":1728427629974,"lastHistogramAt":1728427629974,"firstMetricAt":1728427620097,"lastMetricAt":1728427629974,"period":"1728427620000","summaries":{"plugins.metrics-by-endpoint.response_time./BenchmarkWebQA/Home.aspx/Search":{"min":181,"max":2045,"count":58,"mean":490.6,"p50":347.3,"median":347.3,"p75":507.8,"p90":907,"p95":1274.3,"p99":2059.5,"p999":2059.5},"http.response_time":{"min":181,"max":2045,"count":58,"mean":418.7,"p50":327.1,"median":327.1,"p75":441.5,"p90":596,"p95":907,"p99":2059.5,"p999":2059.5}},"histograms":{"plugins.metrics-by-endpoint.response_time./BenchmarkWebQA/Home.aspx/Search":{"min":181,"max":2045,"count":58,"mean":490.6,"p50":347.3,"median":347.3,"p75":507.8,"p90":907,"p95":1274.3,"p99":2059.5,"p999":2059.5},"http.response_time":{"min":181,"max":2045,"count":58,"mean":418.7,"p50":327.1,"median":327.1,"p75":441.5,"p90":596,"p95":907,"p99":2059.5,"p999":2059.5}}},{"counters":{"vusers.created_by_name.0":27,"vusers.created":27,"http.requests":27,"http.codes.200":107,"http.responses":107,"http.downloaded_bytes":5632362,"plugins.metrics-by-endpoint./BenchmarkWebQA/Home.aspx/Search.codes.200":111,"errors.an URL must be specified":111,"vusers.failed":111},"rates":{"http.request_rate":11},"http.request_rate":null,"firstCounterAt":1728427630155,"firstHistogramAt":1728427630243,"lastCounterAt":1728427638258,"lastHistogramAt":1728427638258,"firstMetricAt":1728427630155,"lastMetricAt":1728427638258,"period":"1728427630000","summaries":{"http.response_time":{"min":172,"max":391,"count":107,"mean":214.1,"p50":206.5,"median":206.5,"p75":219.2,"p90":242.3,"p95":290.1,"p99":354.3,"p999":354.3},"plugins.metrics-by-endpoint.response_time./BenchmarkWebQA/Home.aspx/Search":{"min":172,"max":391,"count":111,"mean":213.4,"p50":206.5,"median":206.5,"p75":219.2,"p90":242.3,"p95":290.1,"p99":354.3,"p999":354.3}},"histograms":{"http.response_time":{"min":172,"max":391,"count":107,"mean":214.1,"p50":206.5,"median":206.5,"p75":219.2,"p90":242.3,"p95":290.1,"p99":354.3,"p999":354.3},"plugins.metrics-by-endpoint.response_time./BenchmarkWebQA/Home.aspx/Search":{"min":172,"max":391,"count":111,"mean":213.4,"p50":206.5,"median":206.5,"p75":219.2,"p90":242.3,"p95":290.1,"p99":354.3,"p999":354.3}}}]};
+
+            const ctx = document.getElementById('responseChart').getContext('2d');
+
+            const responseCodes = results.aggregate.counters;
+            const httpCodes = Object.keys(responseCodes).filter(key => key.includes('http.codes.'));
+            const responseData = httpCodes.reduce((acc, code) => {
+                const codeNumber = code.split('.').pop();
+                acc[codeNumber] = responseCodes[code];
+                return acc;
+            }, {});
+
+            const labels = Object.keys(responseData);
+            const data = Object.values(responseData);
+
+            if (labels.length === 0 || data.every(value => value === 0)) {
+                document.getElementById('chartContainer').innerHTML = "<p>No data available for response codes.</p>";
+            } else {
+                const chartData = {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Response Codes',
+                        data: data,
+                        backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                };
+
+                const config = {
+                    type: 'bar',
+                    data: chartData,
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                };
+
+                new Chart(ctx, config);
+            }
+        </script>
+
+        <h2>Detailed Results</h2>
+        <h3>Counters</h3>
+        <table>
+            <thead>
+                <tr><th>Name</th><th>Value</th></tr>
+            </thead>
+            <tbody>
+                
+                    <tr>
+                        <td>vusers.created_by_name.0</td>
+                        <td>930</td>
+                    </tr>
+                
+                    <tr>
+                        <td>vusers.created</td>
+                        <td>930</td>
+                    </tr>
+                
+                    <tr>
+                        <td>http.requests</td>
+                        <td>930</td>
+                    </tr>
+                
+                    <tr>
+                        <td>http.codes.200</td>
+                        <td>930</td>
+                    </tr>
+                
+                    <tr>
+                        <td>http.responses</td>
+                        <td>930</td>
+                    </tr>
+                
+                    <tr>
+                        <td>http.downloaded_bytes</td>
+                        <td>47190060</td>
+                    </tr>
+                
+                    <tr>
+                        <td>plugins.metrics-by-endpoint./BenchmarkWebQA/Home.aspx/Search.codes.200</td>
+                        <td>930</td>
+                    </tr>
+                
+                    <tr>
+                        <td>errors.an URL must be specified</td>
+                        <td>930</td>
+                    </tr>
+                
+                    <tr>
+                        <td>vusers.failed</td>
+                        <td>930</td>
+                    </tr>
+                
+            </tbody>
+        </table>
+
+        <h3>Rates</h3>
+        <table>
+            <thead>
+                <tr><th>Name</th><th>Value</th></tr>
+            </thead>
+            <tbody>
+                
+                    <tr>
+                        <td>http.request_rate</td>
+                        <td>7</td>
+                    </tr>
+                
+            </tbody>
+        </table>
+
+        <h3>Metadata</h3>
+        <table>
+            <thead>
+                <tr><th>Name</th><th>Value</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>First Counter</td><td>1728427482211</td></tr>
+                <tr><td>Last Counter</td><td>1728427638258</td></tr>
+                <tr><td>First Metric</td><td>1728427482211</td></tr>
+                <tr><td>Last Metric</td><td>1728427638258</td></tr>
+                <tr><td>Period</td><td>1728427630000</td></tr>
+            </tbody>
+        </table>
+
+        
+        <h2>Interpretation of Results</h2>
+        <p>This report reflects the system's performance under different load levels. Below is an interpretation of the results:</p>
+        <ul>
+            <li><strong>Completed Requests:</strong> A total of 930 requests were made during the test. Of these, 930 were successful, representing 100.00% of the total.</li>
+            <li><strong>Errors:</strong> There were 930 errors during the test, representing 100.00% of all requests. This may indicate that the server was unable to handle the full load.</li>
+            <li><strong>Average Response Time:</strong> The average server response time was 269.70 ms. A lower time is ideal, but it is also important to observe the maximum times.</li>
+            <li><strong>Maximum Response Time:</strong> The maximum recorded time was 2045 ms, indicating that at some moments the system took quite a while to respond.</li>
+            <li><strong>95th Percentile:</strong> 95% of the requests had a response time of less than 608.00 ms, suggesting that performance was acceptable in most cases.</li>
+        </ul>
+        <p>Overall, the results indicate that the system was able to handle a large number of requests, but some users may have experienced elevated response times or errors due to overload.</p>
+     <!-- Interpretation inserted here -->
+        
+    </body>
+    </html>
+    

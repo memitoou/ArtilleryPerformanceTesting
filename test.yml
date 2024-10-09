@@ -1,0 +1,56 @@
+config:
+  target: "http://ptg-testweb2/BenchmarkWebQA"  # URL objetivo para la prueba
+  
+  phases:
+    - duration: 60              # Fase 1: Calentamiento
+      arrivalRate: 1
+      rampTo: 5
+      name: Warm up phase
+
+    - duration: 60              # Fase 2: Incremento de carga
+      arrivalRate: 5
+      rampTo: 10
+      name: Ramp up phase
+
+    - duration: 60              # Fase 3: Carga media
+      arrivalRate: 10
+      rampTo: 20
+      name: Stable load phase
+
+    - duration: 30              # Fase 4: Estresado
+      arrivalRate: 20
+      rampTo: 50                # Simular más carga para pruebas de sobrecarga
+      name: Stress test
+
+    - duration: 60              # Fase 5: Sobrecarga
+      arrivalRate: 50
+      name: Overload
+
+  plugins:
+    ensure: {}                  # Garantizar umbrales definidos
+    apdex: {}                   # Calcular índice Apdex
+    metrics-by-endpoint: {}      # Métricas por cada endpoint
+    cpu: {}                     # Monitorear uso de CPU
+
+apdex:
+  threshold: 100                # Umbral Apdex para medir satisfacción
+
+ensure:
+  thresholds:
+    - http.response_time.p99: 100  # 99% de las respuestas < 100 ms
+    - http.response_time.p95: 75   # 95% de las respuestas < 75 ms
+    - http.response_time.p90: 80   # 90% de las respuestas < 80 ms
+    - http.timeouts: 0             # No debe haber timeouts
+    - http.errors.rate: 1          # Errores < 1%
+    - cpu.usage: 70                # Uso de CPU no mayor al 70%
+
+scenarios:
+  - flow:
+    - get:
+        url: "/Home.aspx/Search"
+    - post:
+        url: "/Home.aspx/PostData"
+        json:
+          name: "Free Range Guy"
+          job: "Software Tester"
+    count: 100                  # El flujo se ejecutará 100 veces

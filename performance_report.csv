@@ -1,0 +1,9 @@
+Metric,Value
+Total Requests,6442
+Successful Responses,1024
+Failed Requests,4718
+Average Response Time (ms),269.20
+95th Percentile Response Time (ms),620.30
+CPU Usage,N/A
+Memory Usage,N/A
+Network Usage,N/A
